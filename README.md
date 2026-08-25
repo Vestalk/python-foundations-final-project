@@ -1,27 +1,5 @@
 # Console Assistant Bot
 
-Фінальний проєкт, що об'єднує функціонал трьох попередніх домашніх завдань:
-
-- **goit-pycore-hw-06** — базові класи `Field`, `Name`, `Phone`, `Record`, `AddressBook` на основі `UserDict`.
-- **goit-pycore-hw-07** — поле `Birthday`, метод `get_upcoming_birthdays`, CLI-команди, декоратор `input_error` для обробки помилок вводу.
-- **goit-pycore-hw-08** — збереження та відновлення адресної книги між запусками через `pickle`.
-
-## Структура
-
-```
-python-foundations-final-project/
-├── main.py                 # точка входу
-├── assistant/
-│   ├── fields.py            # Field, Name, Phone, Birthday
-│   ├── record.py            # Record
-│   ├── address_book.py      # AddressBook (UserDict) + get_upcoming_birthdays
-│   ├── decorators.py        # input_error
-│   ├── commands.py          # обробники команд CLI
-│   ├── storage.py           # save_data / load_data (pickle)
-│   └── cli.py                # цикл введення команд
-└── README.md
-```
-
 ## Запуск
 
 ```bash
