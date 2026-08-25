@@ -1,4 +1,4 @@
-from assistant.fields import Birthday, Name, Phone
+from assistant.entity.fields import Birthday, Name, Phone
 
 
 class Record:
