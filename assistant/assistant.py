@@ -1,39 +1,15 @@
-from assistant.commands import (
-    add_birthday,
-    add_contact,
-    birthdays,
-    change_contact,
-    delete_contact,
-    remove_phone,
-    show_all,
-    show_birthday,
-    show_help,
-    show_phone)
+
+from assistant.command.registry import COMMANDS
+from assistant.command.help_utils import get_help_info
 from assistant.storage import load_data, save_data
-
-COMMANDS = {
-    "add": add_contact,
-    "change": change_contact,
-    "remove-phone": remove_phone,
-    "phone": show_phone,
-    "all": show_all,
-    "delete": delete_contact,
-    "add-birthday": add_birthday,
-    "show-birthday": show_birthday,
-    "birthdays": birthdays,
-}
-
-
-def parse_input(user_input: str):
-    cmd, *args = user_input.strip().split()
-    return cmd.lower(), args
-
 
 def main():
     book = load_data()
 
+    help_info_msg = get_help_info();
+
     print("Welcome to the assistant bot!")
-    print(show_help())
+    print(help_info_msg)
 
     while True:
         user_input = input("Enter a command: ")
@@ -48,11 +24,16 @@ def main():
             print("Good bye!")
             break
         elif command == "help":
-            print(show_help())
+            print(help_info_msg)
         elif command in COMMANDS:
-            print(COMMANDS[command](args, book))
+            print(COMMANDS[command].execute(args, book))
         else:
             print("Invalid command. Type 'help' for the list of commands.")
+
+
+def parse_input(user_input: str):
+    cmd, *args = user_input.strip().split()
+    return cmd.lower(), args
 
 
 if __name__ == "__main__":
