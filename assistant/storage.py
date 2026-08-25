@@ -1,4 +1,6 @@
 import pickle
+import shutil
+from pathlib import Path
 
 from assistant.entity.address_book import AddressBook
 
@@ -11,8 +13,16 @@ def save_data(book: AddressBook, filename: str = DEFAULT_FILENAME) -> None:
 
 
 def load_data(filename: str = DEFAULT_FILENAME) -> AddressBook:
-    try:
-        with open(filename, "rb") as f:
-            return pickle.load(f)
-    except (FileNotFoundError, EOFError):
+    path = Path(filename)
+    if not path.exists():
         return AddressBook()
+
+    try:
+        with open(path, "rb") as f:
+            book = pickle.load(f)
+    except Exception as error:
+        print(f"Warning: could not load '{path}': {error});")
+        return AddressBook()
+
+    return book
+
