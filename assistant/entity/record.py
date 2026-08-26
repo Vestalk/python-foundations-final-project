@@ -1,4 +1,4 @@
-from assistant.entity.fields import Birthday, Name, Phone
+from assistant.entity.fields import Birthday, Name, Phone, Address, Email
 
 
 class Record:
@@ -6,6 +6,8 @@ class Record:
         self.name = Name(name)
         self.phones: list[Phone] = []
         self.birthday: Birthday | None = None
+        self.address: Address | None = None
+        self.email: Email | None = None
 
     def add_phone(self, phone_number: str) -> None:
         self.phones.append(Phone(phone_number))
@@ -35,11 +37,22 @@ class Record:
     def add_birthday(self, birthday: str) -> None:
         self.birthday = Birthday(birthday)
 
+    def add_address(self, address: str) -> None:
+        self.address = Address(address)
+
+    def add_email(self, email: str) -> None:
+        self.email = Email(email)
+
     def __str__(self) -> str:
         phones = "; ".join(phone.value for phone in self.phones)
         birthday = str(self.birthday) if self.birthday else "not set"
+        address = str(self.address) if self.address else "not set"
+        email = str(self.email) if self.email else "not set"
+
         return (
             f"Contact name: {self.name.value}, "
             f"phones: {phones}, "
-            f"birthday: {birthday}"
+            f"birthday: {birthday}, "
+            f"address: {address}, "
+            f"email: {email}"
         )

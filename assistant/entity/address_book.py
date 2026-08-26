@@ -17,34 +17,57 @@ class AddressBook(UserDict):
             return True
         return False
 
-    def get_upcoming_birthdays(self, days: int = 7) -> list[dict]:
+    def search_by_name(self, query: str) -> list[Record]:
+        normalized_query = query.casefold()
+
+        found_records = [
+            record
+            for record in self.data.values()
+            if normalized_query in record.name.value.casefold()
+        ]
+
+        return sorted(
+            found_records,
+            key=lambda record: record.name.value.casefold(),
+        )
+
+    def get_upcoming_birthdays(self, days: int) -> list[dict]:
+        if days < 0:
+            raise ValueError("Days cannot be negative")
+
+        start_date = date.today()
+        end_date = start_date + timedelta(days=days)
         upcoming_birthdays = []
-        today = date.today()
 
         for record in self.data.values():
             if record.birthday is None:
                 continue
 
-            birthday = record.birthday.value
-            birthday_this_year = birthday.replace(year=today.year)
+            original_birthday = record.birthday.value
 
-            if birthday_this_year < today:
-                birthday_this_year = birthday_this_year.replace(year=today.year + 1)
+            for year in range(start_date.year, end_date.year + 1):
+                try:
+                    birthday_date = original_birthday.replace(year=year)
+                except ValueError:
+                    # February 29 becomes February 28 in a non-leap year.
+                    birthday_date = original_birthday.replace(
+                        year=year,
+                        day=28,
+                    )
 
-            days_until_birthday = (birthday_this_year - today).days
+                if start_date <= birthday_date <= end_date:
+                    upcoming_birthdays.append(
+                        {
+                            "name": record.name.value,
+                            "birthday_date": birthday_date,
+                        }
+                    )
 
-            if 0 <= days_until_birthday <= days:
-                congratulation_date = birthday_this_year
-                if congratulation_date.weekday() == 5:
-                    congratulation_date += timedelta(days=2)
-                elif congratulation_date.weekday() == 6:
-                    congratulation_date += timedelta(days=1)
-
-                upcoming_birthdays.append(
-                    {
-                        "name": record.name.value,
-                        "congratulation_date": congratulation_date.strftime("%d.%m.%Y"),
-                    }
-                )
+        upcoming_birthdays.sort(
+            key=lambda item: (
+                item["birthday_date"],
+                item["name"].lower(),
+            )
+        )
 
         return upcoming_birthdays
