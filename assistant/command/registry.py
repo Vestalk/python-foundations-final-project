@@ -8,6 +8,8 @@ from assistant.command.remove_phone_command import RemovePhoneCommand
 from assistant.command.show_all_command import ShowAllCommand
 from assistant.command.show_birthday_command import ShowBirthdayCommand
 from assistant.command.show_phone_command import ShowPhoneCommand
+from assistant.command.add_email_command import AddEmailCommand
+from assistant.command.add_address_command import AddAddressCommand
 
 COMMANDS: dict[str, type[Command]] = {
     "add": AddContactCommand,
@@ -18,5 +20,7 @@ COMMANDS: dict[str, type[Command]] = {
     "delete": DeleteContactCommand,
     "add-birthday": AddBirthdayCommand,
     "show-birthday": ShowBirthdayCommand,
-    "birthdays": BirthdaysCommand
+    "birthdays": BirthdaysCommand,
+    "add-address": AddAddressCommand,
+    "add-email": AddEmailCommand,
 }
