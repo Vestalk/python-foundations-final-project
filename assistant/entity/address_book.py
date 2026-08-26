@@ -17,6 +17,20 @@ class AddressBook(UserDict):
             return True
         return False
 
+    def search_by_name(self, query: str) -> list[Record]:
+        normalized_query = query.casefold()
+
+        found_records = [
+            record
+            for record in self.data.values()
+            if normalized_query in record.name.value.casefold()
+        ]
+
+        return sorted(
+            found_records,
+            key=lambda record: record.name.value.casefold(),
+        )
+
     def get_upcoming_birthdays(self, days: int) -> list[dict]:
         if days < 0:
             raise ValueError("Days cannot be negative")
