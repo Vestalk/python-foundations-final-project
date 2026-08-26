@@ -6,7 +6,7 @@ from assistant.storage import load_data, save_data
 def main():
     book = load_data()
 
-    help_info_msg = get_help_info();
+    help_info_msg = get_help_info()
 
     print("Welcome to the assistant bot!")
     print(help_info_msg)

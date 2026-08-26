@@ -1,5 +1,8 @@
 from datetime import datetime
+import re
 
+
+EMAIL_PATTERN = r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
 
 class Field:
     """Base class for a single record field."""
@@ -34,3 +37,15 @@ class Birthday(Field):
 
     def __str__(self) -> str:
         return self.value.strftime("%d.%m.%Y")
+
+class Address(Field):
+    def __init__(self, value: str):
+        if not value:
+            raise ValueError("Address cannot be empty.")
+        super().__init__(value)
+
+class Email(Field):
+    def __init__(self, value: str):
+        if not re.fullmatch(EMAIL_PATTERN, value):
+            raise ValueError("Invalid email format")
+        super().__init__(value)
