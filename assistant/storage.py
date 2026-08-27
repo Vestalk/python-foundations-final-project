@@ -1,9 +1,8 @@
 import pickle
+import shutil
 from pathlib import Path
 
-
 from assistant.entity.address_book import AddressBook
-
 
 DEFAULT_FILENAME = "addressbook.pkl"
 
