@@ -2,6 +2,8 @@
 from assistant.command.registry import COMMANDS
 from assistant.command.help_utils import get_help_info
 from assistant.storage import load_data, save_data
+import shlex
+
 
 def main():
     book = load_data()
@@ -32,7 +34,7 @@ def main():
 
 
 def parse_input(user_input: str):
-    cmd, *args = user_input.strip().split()
+    cmd, *args = shlex.split(user_input)
     return cmd.lower(), args
 
 
