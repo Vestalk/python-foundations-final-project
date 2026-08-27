@@ -13,6 +13,9 @@ from assistant.command.show_note_command import ShowNotesCommand
 from assistant.command.find_notes_by_tag_command import FindNotesByTagCommand
 from assistant.command.edit_note_command import EditNoteCommand
 from assistant.command.delete_note_command import DeleteNoteCommand
+from assistant.command.add_address_command import AddAddressCommand
+from assistant.command.add_email_command import AddEmailCommand
+from assistant.command.search_by_name_command import SearchByNameCommand
 
 COMMANDS: dict[str, type[Command]] = {
     "add": AddContactCommand,
@@ -28,5 +31,8 @@ COMMANDS: dict[str, type[Command]] = {
     "show-notes": ShowNotesCommand,
     "find-notes-tag": FindNotesByTagCommand,
     "add-note": AddNoteCommand,
-    "birthdays": BirthdaysCommand
+    "birthdays": BirthdaysCommand,
+    "add-address": AddAddressCommand,
+    "add-email": AddEmailCommand,
+    "search": SearchByNameCommand,
 }
