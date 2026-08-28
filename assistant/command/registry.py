@@ -13,6 +13,8 @@ from assistant.command.show_note_command import ShowNotesCommand
 from assistant.command.find_notes_by_tag_command import FindNotesByTagCommand
 from assistant.command.edit_note_command import EditNoteCommand
 from assistant.command.delete_note_command import DeleteNoteCommand
+from assistant.command.group_notes_by_tags_command import GroupNotesByTagsCommand
+from assistant.command.clear_command import ClearCommand
 
 COMMANDS: dict[str, type[Command]] = {
     "add": AddContactCommand,
@@ -27,6 +29,8 @@ COMMANDS: dict[str, type[Command]] = {
     "show-birthday": ShowBirthdayCommand,
     "show-notes": ShowNotesCommand,
     "find-notes-tag": FindNotesByTagCommand,
+    "clear": ClearCommand,
+    "group-notes-tags": GroupNotesByTagsCommand,
     "add-note": AddNoteCommand,
     "birthdays": BirthdaysCommand
 }

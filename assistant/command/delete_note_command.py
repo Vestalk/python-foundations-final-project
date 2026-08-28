@@ -1,3 +1,4 @@
+
 from assistant.command.command import Command
 from assistant.entity.address_book import AddressBook
 from assistant.decorators import input_error
