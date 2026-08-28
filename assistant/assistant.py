@@ -1,8 +1,12 @@
+import shlex
+
+from prompt_toolkit import PromptSession
+from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.history import InMemoryHistory
 
 from assistant.command.registry import COMMANDS
 from assistant.command.help_utils import get_help_info
 from assistant.storage import load_data, save_data
-import shlex
 
 
 def main():
@@ -10,11 +14,22 @@ def main():
 
     help_info_msg = get_help_info()
 
+    command_completer = WordCompleter(
+        [*COMMANDS.keys(), "help", "close", "exit"],
+        ignore_case=True,
+        sentence=True,
+    )
+    session = PromptSession(history=InMemoryHistory())
+
     print("Welcome to the assistant bot!")
     print(help_info_msg)
 
     while True:
-        user_input = input("Enter a command: ")
+        user_input = session.prompt(
+            "Enter a command: ",
+            completer=command_completer,
+            complete_while_typing=True,
+        )
 
         if not user_input.strip():
             continue
