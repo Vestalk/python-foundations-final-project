@@ -1,7 +1,5 @@
 from functools import wraps
 from assistant.colors import error
-from functools import wraps
-from assistant.colors import error
 
 
 def input_error(func):
