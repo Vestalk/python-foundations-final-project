@@ -4,8 +4,7 @@ from assistant.decorators import input_error
 
 
 class FindNotesByTagCommand(Command):
-    """find-notes-tag [tag] - find notes by tag in all contacts."""
-
+    """find-notes-tags - find notes by tags."""
     @staticmethod
     @input_error
     def execute(args, book: AddressBook) -> str:

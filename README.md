@@ -25,8 +25,10 @@ python3 main.py
 | `add-note [name] "text" [tags...]`           | Додати нотатку з тегами                             |
 | `show-notes [name]`                          | Показати всі нотатки контакту                       |
 | `find-notes-tag [tag]`                       | Знайти нотатки за тегом                             |
+| `group-notes-tags`                           | Згрупувати нотатки за тегами                        |
 | `edit-note [name] [number] "text" [tags...]` | Редагувати нотатку                                  |
 | `delete-note [name] [number]`                | Видалити нотатку                                    |
+| `clear`                                      | Очистити консоль                                    |
 | `hello`                                      | Привітання                                          |
 | `help`                                       | Список команд                                       |
 | `close` / `exit`                             | Зберегти адресну книгу і вийти                      |
@@ -49,19 +51,18 @@ Enter a command: show-notes John
 Enter a command: find-notes-tag finance
 John: Call bank tomorrow [finance, important]
 
+Enter a command: group-notes-tags
+finance:
+John: Call bank tomorrow [finance, important]
+
+important:
+John: Call bank tomorrow [finance, important]
+
 Enter a command: all
 Contact name: John, phones: 1234567890, birthday: 25.08.1990
 
-Enter a command: exit
-Good bye!
-```
+Enter a command: clear
 
-Enter a command: add John 1234567890
-Contact added.
-Enter a command: add-birthday John 25.08.1990
-Birthday added for John.
-Enter a command: all
-Contact name: John, phones: 1234567890, birthday: 25.08.1990
 Enter a command: exit
 Good bye!
 ```

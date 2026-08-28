@@ -16,7 +16,8 @@ class AddNoteCommand(Command):
 
         name = args[0]
         text = args[1]
-        tags = args[2:]
+
+        tags = [tag.strip().strip(",") for tag in args[2:]]
 
         record = book.find(name)
 
