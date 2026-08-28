@@ -39,11 +39,11 @@ python3 main.py
 | `add-note [name] "text" [tags...]`           | Додати нотатку з тегами                                  |
 | `show-notes [name]`                          | Показати всі нотатки контакту                            |
 | `find-notes-tag [tag]`                       | Знайти нотатки за тегом                                  |
+| `search-notes [text]`                        | Знайти нотатки за текстом                                 |
 | `group-notes-tags`                           | Згрупувати нотатки за тегами                        |
 | `edit-note [name] [number] "text" [tags...]` | Редагувати нотатку                                       |
 | `delete-note [name] [number]`                | Видалити нотатку                                         |
 | `clear`                                      | Очистити консоль                                    |
-| `hello`                                      | Привітання                                               |
 | `help`                                       | Список команд                                            |
 | `close` / `exit`                             | Зберегти адресну книгу і вийти                           |
 

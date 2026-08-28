@@ -26,6 +26,11 @@ class Record:
 
         return result
 
+    def find_notes_by_text(self, query: str) -> list[Note]:
+        query = query.casefold()
+
+        return [note for note in self.notes if query in note.text.casefold()]
+
     def add_phone(self, phone_number: str) -> None:
         self.phones.append(Phone(phone_number))
 

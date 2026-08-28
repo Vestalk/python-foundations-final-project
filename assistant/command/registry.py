@@ -18,6 +18,7 @@ from assistant.command.clear_command import ClearCommand
 from assistant.command.add_address_command import AddAddressCommand
 from assistant.command.add_email_command import AddEmailCommand
 from assistant.command.search_by_name_command import SearchByNameCommand
+from assistant.command.search_notes_command import SearchNotesCommand
 
 COMMANDS: dict[str, type[Command]] = {
     "add": AddContactCommand,
@@ -39,4 +40,5 @@ COMMANDS: dict[str, type[Command]] = {
     "add-address": AddAddressCommand,
     "add-email": AddEmailCommand,
     "search": SearchByNameCommand,
+    "search-notes": SearchNotesCommand,
 }
