@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
+
 from assistant.entity.address_book import AddressBook
+
 
 class Command(ABC):
     """Base class for a single CLI command."""

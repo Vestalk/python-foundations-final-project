@@ -8,7 +8,7 @@ class AddNoteCommand(Command):
 
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         if len(args) < 2:
             raise ValueError(
                 'Usage: add-note [name] "note text" [tags...]'
@@ -17,7 +17,7 @@ class AddNoteCommand(Command):
         name = args[0]
         text = args[1]
 
-        tags = [tag.strip().strip(",") for tag in args[2:]]
+        tags = args[2:]
 
         record = book.find(name)
 

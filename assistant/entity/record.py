@@ -3,7 +3,7 @@ from assistant.entity.notes import Note
 
 
 class Record:
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         self.name = Name(name)
         self.phones: list[Phone] = []
         self.birthday: Birthday | None = None
@@ -80,11 +80,11 @@ class Record:
         )
 
     def edit_note(
-            self,
-            note_number: int,
-            text: str,
-            tags: list[str]) -> None:
-
+        self,
+        note_number: int,
+        text: str,
+        tags: list[str],
+    ) -> None:
         if note_number < 1 or note_number > len(self.notes):
             raise ValueError("Invalid note number.")
 

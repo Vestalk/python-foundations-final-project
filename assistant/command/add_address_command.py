@@ -2,12 +2,13 @@ from assistant.command.command import Command
 from assistant.entity.address_book import AddressBook
 from assistant.decorators import input_error
 
+
 class AddAddressCommand(Command):
     """add-address [name] [address] - add or update an address for a contact."""
 
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         if len(args) < 2:
             raise ValueError("Usage: add-address [name] [address]")
 

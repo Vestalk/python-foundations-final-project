@@ -8,7 +8,7 @@ class EditNoteCommand(Command):
 
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         if len(args) < 3:
             raise ValueError(
                 'Usage: edit-note [name] [number] "new text" [tags...]'

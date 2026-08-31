@@ -9,7 +9,7 @@ class DeleteNoteCommand(Command):
 
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         if len(args) < 2:
             raise ValueError(
                 "Usage: delete-note [name] [number]"

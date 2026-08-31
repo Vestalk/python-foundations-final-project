@@ -2,12 +2,13 @@ from assistant.command.command import Command
 from assistant.entity.address_book import AddressBook
 from assistant.decorators import input_error
 
+
 class BirthdaysCommand(Command):
-    """birthdays [days] - show contacts whose birthdays fall within the given number of days (default 7)."""
+    """birthdays [days] - show upcoming birthdays (default 7 days)."""
 
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         days = 7
         if args:
             try:
@@ -21,6 +22,7 @@ class BirthdaysCommand(Command):
 
         result = [f"Upcoming birthdays in the next {days} days:"]
         for item in upcoming:
-            result.append(f"{item['name']}: {item['birthday_date'].strftime('%d.%m.%Y')}")
+            birthday_date = item["birthday_date"].strftime("%d.%m.%Y")
+            result.append(f"{item['name']}: {birthday_date}")
 
         return "\n".join(result)
