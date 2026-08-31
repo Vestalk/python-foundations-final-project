@@ -2,12 +2,13 @@ from assistant.command.command import Command
 from assistant.entity.address_book import AddressBook
 from assistant.decorators import input_error
 
+
 class ChangeContactCommand(Command):
     """change [name] [old phone] [new phone] - change an existing phone number."""
 
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         if len(args) < 3:
             raise ValueError("Usage: change [name] [old phone] [new phone]")
 

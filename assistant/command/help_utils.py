@@ -1,8 +1,10 @@
-
 import inspect
+
 from assistant.command.command import Command
 
+
 CLOSE_ENTRY = "close / exit - Save the address book and close the assistant bot."
+
 
 def get_help_info() -> str:
     commands = sorted(_find_all_commands(), key=lambda cls: cls.__name__)
@@ -23,6 +25,6 @@ def _find_all_commands() -> list[type[Command]]:
 
     return found
 
+
 def _describe(command_cls: type[Command]) -> str:
     return (command_cls.__doc__ or "").strip().splitlines()[0]
-

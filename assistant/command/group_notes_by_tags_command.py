@@ -10,7 +10,7 @@ class GroupNotesByTagsCommand(Command):
     """group-notes-tags - show notes grouped by tags."""
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         grouped_notes = defaultdict(list)
 
         for record in book.data.values():

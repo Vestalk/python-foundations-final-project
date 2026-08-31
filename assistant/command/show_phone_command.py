@@ -2,12 +2,13 @@ from assistant.command.command import Command
 from assistant.entity.address_book import AddressBook
 from assistant.decorators import input_error
 
+
 class ShowPhoneCommand(Command):
     """phone [name] - show all phone numbers for a contact."""
 
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         if not args:
             raise ValueError("Usage: phone [name]")
 

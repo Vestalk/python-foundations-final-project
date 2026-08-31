@@ -7,7 +7,7 @@ class FindNotesByTagCommand(Command):
     """find-notes-tags - find notes by tags."""
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         if len(args) < 1:
             raise ValueError("Usage: find-notes-tag [tag]")
 

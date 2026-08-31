@@ -3,12 +3,13 @@ from assistant.entity.address_book import AddressBook
 from assistant.entity.record import Record
 from assistant.decorators import input_error
 
+
 class AddContactCommand(Command):
     """add [name] [phone] - add a new contact or a phone to an existing one."""
 
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         if len(args) < 2:
             raise ValueError("Usage: add [name] [phone]")
 

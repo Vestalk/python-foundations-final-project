@@ -1,22 +1,20 @@
 from functools import wraps
-from assistant.colors import error
+from typing import Any, Callable
 
 
-def input_error(func):
+def input_error(func: Callable[..., str]) -> Callable[..., str]:
     @wraps(func)
-    def inner(*args, **kwargs):
+    def inner(*args: Any, **kwargs: Any) -> str:
         try:
             return func(*args, **kwargs)
 
         except ValueError as err:
-            return error(f"Error: {err}")
+            return f"Error: {err}"
 
         except IndexError:
-            return error(
-                "Error: Please provide all required arguments."
-            )
+            return "Error: Please provide all required arguments."
 
         except KeyError:
-            return error("Error: Contact not found.")
+            return "Error: Contact not found."
 
     return inner

@@ -8,7 +8,7 @@ class SearchByNameCommand(Command):
 
     @staticmethod
     @input_error
-    def execute(args, book: AddressBook) -> str:
+    def execute(args: list[str], book: AddressBook) -> str:
         if not args:
             raise ValueError("Usage: search [name]")
 
